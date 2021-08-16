@@ -1,0 +1,52 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gameArea {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-auto-flow: column;
+  width: min-content;
+  border-style: solid;
+  border-width: 0px 5px 5px 0px;
+}
+
+#moneyGrid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 170px;
+  height: 100px;
+  background-color: blue;
+  color: yellow;
+  border-style: solid;
+  border-color: black;
+  border-width: 5px 0px 0px 5px;
+  font-size: 45pt;
+  font-weight: bold;
+  text-align: center;
+  text-justify: center;
+}
+
+.questionArea {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: min-content;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16pt;
+  padding: 10px;
+}
