@@ -19,7 +19,7 @@ async function importJeopardy() {
         let boardAmount = 200;
 
         for (let i = 0; i < 30; i++) {
-
+            ß
             // make a div
             $('.gameArea').append('<div id="moneyGrid"></div>');
 
@@ -76,57 +76,21 @@ async function importJeopardy() {
                 $(categoryArea).append('<b>Category: </b>', selectedQuestion.category)
                 $(questionArea).append('<b>Question: </b>', selectedQuestion.question)
 
-
-
-                let selectedQuestionTest = selectedQuestion.value
-
-                function toFloat(num) {
-                    dotPos = num.indexOf('.');
-                    commaPos = num.indexOf(',');
-
-                    if (dotPos < 0)
-                        dotPos = 0;
-
-                    if (commaPos < 0)
-                        commaPos = 0;
-
-                    if ((dotPos > commaPos) && dotPos)
-                        sep = dotPos;
-                    else {
-                        if ((commaPos > dotPos) && commaPos)
-                            sep = commaPos;
-                        else
-                            sep = false;
-                    }
-
-                    if (sep == false)
-                        return parseFloat(num.replace(/[^\d]/g, ""));
-
-                    return parseFloat(
-                        num.substr(0, sep).replace(/[^\d]/g, "") + '.' +
-                        num.substr(sep + 1, num.length).replace(/[^0-9]/, "")
-                    );
-
+                let score = localStorage.getItem('score');
+                if (score == null) {
+                    score = 0;
                 }
-
-                let selectedQuestionTest2 = toFloat(selectedQuestionTest);
 
                 //submit button
                 submitButton.addEventListener('click', () => {
                     console.log(userInput.value);
 
-                    let score = localStorage.getItem('score');
-                    if (score === null) {
-                        score = 0;
-                    }
-
                     if (userInput.value === selectedQuestion.answer) {
-                        $('.resultArea').append('<b>Congratulations, you\'ve earned: </b>', selectedQuestion.value);
-                        score = score + selectedQuestionTest2;
-                        $('.score').append('<b>Current Score: </b>', score)
+                        $('.resultArea').append('<b>Congratulations, you\'ve earned: </b>', selectedQuestion.value);;
+                        score = score + Number(selectedQuestion.value);
+                        $('.scoreArea').append('<b>Current Score: </b>', score)
                         localStorage.setItem('score', score)
                     }
-
 
                     if (userInput.value !== selectedQuestion.answer) {
                         $('.resultArea').append('<b>Sorry, you\'ve lost: </b>', selectedQuestion.value)
